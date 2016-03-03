@@ -13,7 +13,7 @@ namespace ANRTournament.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return new ObjectResult("test");
+            return View();
         }
     }
 }

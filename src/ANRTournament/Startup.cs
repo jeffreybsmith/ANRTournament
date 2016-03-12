@@ -6,6 +6,8 @@ using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Data.Entity;
+using ANRTournament.Models;
 
 namespace ANRTournament
 {
@@ -15,6 +17,12 @@ namespace ANRTournament
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = @"Server=(localdb)\mssqllocaldb;Database=ANRTournament;Trusted_Connection=True;";
+
+            services.AddEntityFramework()
+                .AddSqlServer()
+                .AddDbContext<ANRTournamentContext>(options =>
+                    options.UseSqlServer(connectionString));
             services.AddMvc(
                 
                 );

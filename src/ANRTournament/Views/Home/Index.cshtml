@@ -1,4 +1,6 @@
 ﻿
+@using ANRTournament.Models
+@model Player
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,3 +8,4 @@
 <h2>Index</h2>
 
 <p>Hello from Home View Template!</p>
+<div>@Model.FirstName : @Model.LastName</div>

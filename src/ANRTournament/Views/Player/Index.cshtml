@@ -1,13 +1,15 @@
-﻿
-@using ANRTournament.Models
+﻿@using ANRTournament.Models
 @model Player[]
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Player";
 }
 
-<h2>Index</h2>
+<h2>Players</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+    <a asp-controller="Player" asp-action="Create">Create New</a>
+</p>
 
-<p>Hello from Home View Template!</p>
 <table class="table">
     <tr>
         <th>Name</th>

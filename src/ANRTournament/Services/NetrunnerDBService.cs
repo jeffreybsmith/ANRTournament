@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using System.Collections;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using ANRTournament.Models;
-using Newtonsoft.Json;
-
+using System.Net.Http.Headers;
 
 namespace ANRTournament.Services
 {
@@ -18,8 +15,9 @@ namespace ANRTournament.Services
 
         private readonly IMemoryCache _cache;
 
-        public NetrunnerDBService()
+        public NetrunnerDBService(IMemoryCache memoryCache)
         {
+            _cache = memoryCache;
             _apiUrl = @"http://netrunnerdb.com/";
         }
 
@@ -57,14 +55,18 @@ namespace ANRTournament.Services
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 HttpResponseMessage response = await client.GetAsync("api/cards");
-                //if (response.IsSuccessStatusCode)
-                //{
+                if (response.IsSuccessStatusCode)
+                {
                     List<Card> cards = new List<Card>();
-                    var results = await response.Content.ReadAsStringAsync();
-                    cards.Add(JsonConvert.DeserializeObject<Card>(results));
+                    cards = await response.Content.ReadAsAsync<List<Card>>();
+                    //cards.Add(JsonConvert.DeserializeObject<Card>(results));
 
                     return cards;
-                //}
+                }
+                else
+                {
+                    return new List<Card>();
+                }
             }
         }
     }

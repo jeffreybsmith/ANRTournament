@@ -15,7 +15,9 @@
     "Microsoft.AspNet.Mvc.Core": "6.0.0-rc1-final",
     "Microsoft.AspNet.Mvc.ViewFeatures": "6.0.0-rc1-final",
     "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
-    "Microsoft.Extensions.CodeGenerators.Mvc": "1.0.0-*"
+    "Microsoft.Extensions.Caching.Abstractions": "1.0.0-rc1-final",
+    "Microsoft.Extensions.CodeGenerators.Mvc": "1.0.0-*",
+    "Newtonsoft.Json": "8.0.2"
   },
 
   "commands": {
@@ -24,7 +26,11 @@
   },
 
   "frameworks": {
-    "dnx451": { },
+    "dnx451": {
+      "dependencies": {
+        "System.Net.Http": "4.0.1-beta-23516"
+      }
+    },
     "dnxcore50": { }
   },
 

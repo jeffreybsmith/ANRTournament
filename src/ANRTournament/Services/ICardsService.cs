@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ANRTournament.Services
 {
-    interface INetrunnerDBService
+    interface ICardsService
     {
     }
 }

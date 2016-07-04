@@ -19,5 +19,7 @@ namespace ANRTournament.Models
 
         public string Side { get; set; }
 
+        public string Imagesrc { get; set; }
+
     }
 }

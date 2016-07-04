@@ -9,7 +9,10 @@
 
 <p>Hello from Home View Template - Cards!</p>
 
-    @foreach (var item in Model)
+<div class="row">
+    @foreach (var card in Model)
     {
-        <li> @Html.DisplayFor(modelItem => item.Title)</li>
+        @Html.Partial("_Identity", card)
+        <!--<partial name="_Identity" model="card"></partial>-->
     }
+</div>

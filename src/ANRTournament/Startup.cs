@@ -8,6 +8,7 @@ using Microsoft.AspNet.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Data.Entity;
 using ANRTournament.Models;
+using ANRTournament.Services;
 
 namespace ANRTournament
 {
@@ -19,6 +20,7 @@ namespace ANRTournament
         {
             var connectionString = @"Server=(localdb)\mssqllocaldb;Database=ANRTournament;Trusted_Connection=True;";
 
+            services.AddScoped<ICardsService, NetrunnerDBService>();
             services.AddEntityFramework()
                 .AddSqlServer()
                 .AddDbContext<ANRTournamentContext>(options =>
@@ -36,7 +38,7 @@ namespace ANRTournament
             app.UseMvc(routes =>
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}"  
+                    template: "{controller=Home}/{action=Cards}"  
                 )    
             );
 

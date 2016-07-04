@@ -1,0 +1,15 @@
+﻿
+@using ANRTournament.Models
+@model Card[]
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>Hello from Home View Template - Cards!</p>
+
+    @foreach (var item in Model)
+    {
+        <li> @Html.DisplayFor(modelItem => item.Title)</li>
+    }

@@ -35,7 +35,8 @@ namespace ANRTournament.Controllers
         public async Task<IActionResult> Cards()
         {
             var cards = await _cardService.GetCardsAsync(true);
-            return View(cards.Cards.Where(c => c.Type == "Identity").OrderBy(c => c.Title).ToArray<Card>());
+
+            return View(cards.Where(c => c.Type_Code == "identity").OrderBy(c => c.Title).ToArray());
 
         }
     }
